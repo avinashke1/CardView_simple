@@ -47,7 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         final int age = stationary.getAge();
 
-
+        holder.fun(name);
         Log.d("OnBind", "calling on bind");
         imageLoader = Singleton.getInstance().getImageLoader();
         imageLoader.get(stationary.getImgUrl(), ImageLoader.getImageListener(holder.imageView, R.mipmap.ic_launcher, R.drawable.abc_btn_check_material));
@@ -76,6 +76,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public TextView textViewName;
 
         public TextView textViewage;
+        String name;
 
 
 
@@ -91,12 +92,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             itemView.setOnClickListener(this);
 
         }
+        public void fun(String name){
+            this.name=name;
+        }
+        
 
 
         @Override
         public void onClick(View v) {
 
-            Toast.makeText(context,"abc",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,name,Toast.LENGTH_LONG).show();
 
         }
     }
